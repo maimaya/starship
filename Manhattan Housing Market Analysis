@@ -1,0 +1,117 @@
+### Housing market has always occupied an important position in the market. 
+### Speaking of the housing price, New York City is among the most expensive and competitive housing markets in the nation.
+### According to data from Census.gov, there are 758,133 households in Manhattan until 2018. 
+### This project will analyze housing market dataset in the context of Manhattan. 
+### The dataset was downloaded online in csv form and will be analyzed using python. 
+### The project will also use sentiment analysis to extract information from the data. 
+### The information that will be extracted includes house price patterns for residential and commercial houses as well as articulate price ranges for neighborhoods in Manhattan. 
+import pandas as pd
+import seaborn as sns
+import numpy as np
+
+
+# #### Read the CSV file that has the data
+
+# In[74]:
+
+
+data = pd.read_csv("Users/Weijing/housing.csv")
+
+
+# #### We check the first set of data from the file 
+
+# In[75]:
+
+
+data.head()
+
+
+# #### We can check the last set of data
+
+# In[76]:
+
+
+data.tail()
+
+
+# #### We can check the columns in the file
+
+# In[77]:
+
+
+data.columns
+
+
+# #### We then check the number of entries that we are working on 
+
+# In[78]:
+
+
+data.shape
+
+
+# #### Clean data by removing null values
+
+# In[86]:
+
+
+data['price'] = data['price'].astype('float')
+
+
+# In[87]:
+
+
+data = data.dropna()
+
+
+# #### We can check a snapshot of the data 
+
+# In[89]:
+
+
+data.describe(include='all')
+
+
+# #### Check if data frame has null values
+
+# In[90]:
+
+
+data.isnull().sum()
+
+
+# #### We can then visualize the data
+
+# In[91]:
+
+
+data.head()
+
+
+# #### We can check the relationship between price and commercial units
+
+# In[92]:
+
+
+sns.relplot(x='price', y='neighborhood', data=data)
+
+
+# #### We can also check the price against the building class category
+
+# In[94]:
+
+
+sns.relplot(x='price', y='building_class_category', data=data)
+
+
+# #### Price against residential units
+
+# In[100]:
+
+
+sns.relplot(x='price', y='residential_units', data=data)
+
+
+# 
+
+# In[ ]:
